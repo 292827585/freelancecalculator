@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Income & Pricing Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/32" alt="Logo">
+                <span>Freelance Income & Pricing Calculator</span>
+            </div>
+            <div class="header-badge">100% FREE • No Sign Up • No Data Stored</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Know What to Charge.<br>Know What You'll Keep.</h1>
+                <p>Calculate your freelance hourly rate, project quotes, and net income after platform fees and taxes. Includes 2026 global market benchmarks.</p>
+                <div class="hero-stats">
+                    <span>2026 Data</span>
+                    <span>Global</span>
+                    <span>0%</span>
+                </div>
+                <div class="hero-stats-labels">
+                    <span>Updated</span>
+                    <span>Benchmarks</span>
+                    <span>Data Stored</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/200x150" alt="Dashboard Preview">
+            </div>
+            <div class="ad-slot-top">
+                <div class="ad-placeholder">广告位</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Your Inputs Section -->
+    <section class="inputs-section">
+        <div class="section-header">
+            <div class="section-icon">1</div>
+            <h2>Your Inputs</h2>
+            <span class="section-subtitle">All calculations update in real-time</span>
+            <button class="reset-btn">Reset All</button>
+        </div>
+
+        <div class="inputs-grid">
+            <!-- Personal Goals -->
+            <div class="input-card">
+                <div class="card-header">
+                    <div class="card-icon">🎯</div>
+                    <h3>Personal Goals</h3>
+                </div>
+                <div class="form-group">
+                    <label>Target Monthly Net Income (USD)</label>
+                    <div class="input-with-symbol">
+                        <span>$</span>
+                        <input type="number" id="targetIncome" value="4000" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Estimated Monthly Billable Hours</label>
+                    <div class="hours-display">
+                        <span id="hoursValue">80</span>
+                    </div>
+                    <input type="range" id="billableHours" min="0" max="160" value="80">
+                    <div class="range-labels">
+                        <span>0</span>
+                        <span>160</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Breakdown for reference: 80 hours/month = 20 hrs/week</label>
+                    <span class="reference-text">(80-100 hrs/week)</span>
+                </div>
+            </div>
+
+            <!-- Project Costs -->
+            <div class="input-card">
+                <div class="card-header">
+                    <div class="card-icon">💰</div>
+                    <h3>Project Costs</h3>
+                </div>
+                <div class="form-group">
+                    <label>Monthly Project-Related Expenses (USD)</label>
+                    <div class="input-with-symbol">
+                        <span>$</span>
+                        <input type="number" id="expenses" value="200" min="0">
+                    </div>
+                </div>
+                <div class="cost-breakdown">
+                    <p>• e.g. Adobe Suite: $50, Cloud hosting: $30</p>
+                    <p>• e.g. Mobile Data: $20, Co-working: $100</p>
+                    <p>• Software subscriptions, tools, etc.</p>
+                </div>
+                <p class="disclaimer">*DO NOT include personal living expenses</p>
+            </div>
+
+            <!-- Platform Selection -->
+            <div class="input-card">
+                <div class="card-header">
+                    <div class="card-icon">🌐</div>
+                    <h3>Platform</h3>
+                </div>
+                <div class="platform-options">
+                    <div class="platform-item">
+                        <input type="checkbox" name="platform" value="direct" id="platform-direct" checked>
+                        <label for="platform-direct" class="platform-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="platform-name">
+                                Direct Client (0-5%)
+                                <a href="https://example.com" target="_blank" class="platform-link" title="Visit website">↗</a>
+                            </span>
+                            <span class="platform-fee">0-5%</span>
+                        </label>
+                    </div>
+                    <div class="platform-item">
+                        <input type="checkbox" name="platform" value="upwork" id="platform-upwork">
+                        <label for="platform-upwork" class="platform-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="platform-name">
+                                Upwork
+                                <a href="https://www.upwork.com" target="_blank" class="platform-link" title="Visit Upwork">↗</a>
+                            </span>
+                            <span class="platform-fee">20%</span>
+                        </label>
+                    </div>
+                    <div class="platform-item">
+                        <input type="checkbox" name="platform" value="fiverr" id="platform-fiverr">
+                        <label for="platform-fiverr" class="platform-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="platform-name">
+                                Fiverr
+                                <a href="https://www.fiverr.com" target="_blank" class="platform-link" title="Visit Fiverr">↗</a>
+                            </span>
+                            <span class="platform-fee">20%</span>
+                        </label>
+                    </div>
+                    <div class="platform-item">
+                        <input type="checkbox" name="platform" value="freelancer" id="platform-freelancer">
+                        <label for="platform-freelancer" class="platform-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="platform-name">
+                                Freelancer.com
+                                <a href="https://www.freelancer.com" target="_blank" class="platform-link" title="Visit Freelancer">↗</a>
+                            </span>
+                            <span class="platform-fee">10%</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Details -->
+            <div class="input-card">
+                <div class="card-header">
+                    <div class="card-icon">📋</div>
+                    <h3>Project Details</h3>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="web-development">Web Development</option>
+                        <option value="ui-ux-design">UI/UX Design</option>
+                        <option value="graphic-design">Graphic Design</option>
+                        <option value="writing-content">Writing/Content</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Default Rate / hour</label>
+                    <div class="input-with-symbol">
+                        <span>$</span>
+                        <input type="number" id="defaultRate" value="75" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Experience Level</label>
+                    <div class="level-options">
+                        <label class="level-radio">
+                            <input type="radio" name="experience" value="junior">
+                            <span>Junior<br><small>(0-2/3 Yrs)</small></span>
+                        </label>
+                        <label class="level-radio active">
+                            <input type="radio" name="experience" value="mid-level" checked>
+                            <span>Mid-level<br><small>(3-6 Yrs)</small></span>
+                        </label>
+                        <label class="level-radio">
+                            <input type="radio" name="experience" value="senior">
+                            <span>Senior<br><small>(7+ Yrs)</small></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Project Complexity</label>
+                    <select id="complexity">
+                        <option value="simple">Simple</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="complex">Complex</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Location & Tax -->
+            <div class="input-card">
+                <div class="card-header">
+                    <div class="card-icon">🌍</div>
+                    <h3>Location & Tax</h3>
+                </div>
+                <div class="form-group">
+                    <label>Country / Region</label>
+                    <select id="location">
+                        <optgroup label="North America">
+                            <option value="united-states" data-tax="25">United States</option>
+                            <option value="canada" data-tax="26">Canada</option>
+                            <option value="mexico" data-tax="30">Mexico</option>
+                        </optgroup>
+                        <optgroup label="Europe">
+                            <option value="united-kingdom" data-tax="20">United Kingdom</option>
+                            <option value="germany" data-tax="22">Germany</option>
+                            <option value="france" data-tax="24">France</option>
+                            <option value="netherlands" data-tax="23">Netherlands</option>
+                            <option value="sweden" data-tax="25">Sweden</option>
+                            <option value="norway" data-tax="24">Norway</option>
+                            <option value="denmark" data-tax="25">Denmark</option>
+                            <option value="finland" data-tax="24">Finland</option>
+                            <option value="ireland" data-tax="22">Ireland</option>
+                            <option value="switzerland" data-tax="20">Switzerland</option>
+                            <option value="austria" data-tax="22">Austria</option>
+                            <option value="belgium" data-tax="23">Belgium</option>
+                            <option value="italy" data-tax="24">Italy</option>
+                            <option value="spain" data-tax="21">Spain</option>
+                            <option value="portugal" data-tax="21">Portugal</option>
+                            <option value="poland" data-tax="18">Poland</option>
+                            <option value="czech-republic" data-tax="19">Czech Republic</option>
+                            <option value="romania" data-tax="18">Romania</option>
+                            <option value="hungary" data-tax="18">Hungary</option>
+                            <option value="bulgaria" data-tax="15">Bulgaria</option>
+                            <option value="ukraine" data-tax="18">Ukraine</option>
+                        </optgroup>
+                        <optgroup label="Asia Pacific">
+                            <option value="australia" data-tax="23">Australia</option>
+                            <option value="new-zealand" data-tax="21">New Zealand</option>
+                            <option value="japan" data-tax="20">Japan</option>
+                            <option value="south-korea" data-tax="22">South Korea</option>
+                            <option value="singapore" data-tax="18">Singapore</option>
+                            <option value="hong-kong" data-tax="17">Hong Kong</option>
+                            <option value="taiwan" data-tax="18">Taiwan</option>
+                            <option value="china" data-tax="25">China</option>
+                        </optgroup>
+                        <optgroup label="South & Southeast Asia">
+                            <option value="india" data-tax="18">India</option>
+                            <option value="pakistan" data-tax="15">Pakistan</option>
+                            <option value="bangladesh" data-tax="15">Bangladesh</option>
+                            <option value="sri-lanka" data-tax="16">Sri Lanka</option>
+                            <option value="indonesia" data-tax="18">Indonesia</option>
+                            <option value="thailand" data-tax="17">Thailand</option>
+                            <option value="vietnam" data-tax="18">Vietnam</option>
+                            <option value="malaysia" data-tax="18">Malaysia</option>
+                            <option value="philippines" data-tax="20">Philippines</option>
+                        </optgroup>
+                        <optgroup label="Latin America">
+                            <option value="brazil" data-tax="27">Brazil</option>
+                            <option value="argentina" data-tax="25">Argentina</option>
+                            <option value="chile" data-tax="22">Chile</option>
+                            <option value="colombia" data-tax="20">Colombia</option>
+                            <option value="peru" data-tax="20">Peru</option>
+                            <option value="venezuela" data-tax="25">Venezuela</option>
+                        </optgroup>
+                        <optgroup label="Middle East & Africa">
+                            <option value="uae" data-tax="15">UAE</option>
+                            <option value="saudi-arabia" data-tax="15">Saudi Arabia</option>
+                            <option value="israel" data-tax="22">Israel</option>
+                            <option value="south-africa" data-tax="22">South Africa</option>
+                            <option value="egypt" data-tax="18">Egypt</option>
+                            <option value="nigeria" data-tax="20">Nigeria</option>
+                            <option value="kenya" data-tax="22">Kenya</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Estimated Tax Rate</label>
+                    <div class="input-with-symbol">
+                        <input type="number" id="taxRate" value="25" min="0" max="100">
+                        <span>%</span>
+                    </div>
+                </div>
+                <div class="tax-range">
+                    <span>Typical range: 15-30%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Your Results Section -->
+    <section class="results-section">
+        <div class="section-header">
+            <div class="section-icon">2</div>
+            <h2>Your Results</h2>
+            <span class="section-subtitle">Updated instantly</span>
+        </div>
+
+        <div class="results-grid">
+            <!-- Recommended Hourly Rate -->
+            <div class="result-card rate-card">
+                <div class="card-title">Recommended Hourly Rate</div>
+                <div class="rate-display">
+                    <span class="rate-symbol">$</span>
+                    <span class="rate-value" id="recommendedRate">72.22</span>
+                    <span class="rate-unit">/hr</span>
+                </div>
+                <p class="rate-note">Charge at least this rate to reach your target net after all deductions.</p>
+            </div>
+
+            <!-- Suggested Project Quote Range -->
+            <div class="result-card quote-card">
+                <div class="card-title">Suggested Project Quote Range</div>
+                <div class="quote-display">
+                    <span class="quote-value">$3,250</span>
+                    <span class="quote-separator">—</span>
+                    <span class="quote-value">$4,950</span>
+                </div>
+                <p class="quote-note">Based on 45 - 65 project hours (Medium complexity)</p>
+            </div>
+
+            <!-- Smart Feedback -->
+            <div class="result-card feedback-card">
+                <div class="card-title">
+                    <span class="feedback-icon">💡</span>
+                    Smart Feedback
+                </div>
+                <p class="feedback-text">Your target to realize as a Mid-level Web Developer in United States. Consider Direct clients to maximize your net income.</p>
+                <div class="feedback-icon-lg">💡</div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-grid">
+            <!-- Net Income Comparison Table -->
+            <div class="chart-card table-card">
+                <div class="chart-header">
+                    <span class="chart-icon">📊</span>
+                    Net Income Comparison (Monthly)
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>Gross Income</th>
+                                <th>Platform Fees</th>
+                                <th>Taxes</th>
+                                <th>Expenses</th>
+                                <th>Your Net</th>
+                            </tr>
+                        </thead>
+                        <tbody id="incomeTableBody">
+                            <tr>
+                                <td>Direct Client (0-5%)</td>
+                                <td>$5,810</td>
+                                <td>$0</td>
+                                <td>$1,276</td>
+                                <td>$200</td>
+                                <td>$3,728</td>
+                            </tr>
+                            <tr>
+                                <td>Upwork (-20%)</td>
+                                <td>$5,810</td>
+                                <td>$1,162</td>
+                                <td>$1,166</td>
+                                <td>$200</td>
+                                <td>$3,284</td>
+                            </tr>
+                            <tr>
+                                <td>Fiverr (-20%)</td>
+                                <td>$5,810</td>
+                                <td>$1,162</td>
+                                <td>$1,166</td>
+                                <td>$200</td>
+                                <td>$3,284</td>
+                            </tr>
+                            <tr>
+                                <td>Freelancer.com (-10%)</td>
+                                <td>$5,810</td>
+                                <td>$581</td>
+                                <td>$1,214</td>
+                                <td>$200</td>
+                                <td>$3,384</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="table-note">To achieve your target income of $4,000, you need to bill $6,580 monthly before deductions.</p>
+            </div>
+
+            <!-- Income Breakdown Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span class="chart-icon">📈</span>
+                    Income Breakdown (Direct Client)
+                </div>
+                <div class="chart-container">
+                    <canvas id="incomeBreakdownChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Net Income by Platform Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span class="chart-icon">📉</span>
+                    Net Income by Platform
+                </div>
+                <div class="chart-container">
+                    <canvas id="platformChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Benchmarks Section -->
+    <section class="benchmarks-section">
+        <div class="section-header">
+            <div class="section-icon">3</div>
+            <h2>2026 Market Benchmarks</h2>
+            <span class="section-subtitle">Global hourly rate ranges (USD)</span>
+        </div>
+
+        <!-- Benchmarks Table -->
+        <div class="benchmarks-table-container">
+            <table class="benchmarks-table">
+                <thead>
+                    <tr>
+                        <th>Region</th>
+                        <th>Junior (<2 yr exp)</th>
+                        <th>Mid-level</th>
+                        <th>Senior (6+ yr)</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>United States / Canada</td>
+                        <td>$45 - $70</td>
+                        <td>$70 - $110</td>
+                        <td>$100 - $180+</td>
+                        <td>Platform fees, strong client budgets</td>
+                    </tr>
+                    <tr>
+                        <td>Western Europe</td>
+                        <td>$40 - $60</td>
+                        <td>$55 - $90</td>
+                        <td>$80 - $140</td>
+                        <td>Germany, UK, Netherlands, France</td>
+                    </tr>
+                    <tr>
+                        <td>Eastern Europe</td>
+                        <td>$25 - $45</td>
+                        <td>$40 - $70</td>
+                        <td>$60 - $100</td>
+                        <td>Poland, Ukraine, Romania, Czech</td>
+                    </tr>
+                    <tr>
+                        <td>Southeast Asia</td>
+                        <td>$18 - $35</td>
+                        <td>$30 - $50</td>
+                        <td>$45 - $80</td>
+                        <td>Philippines, Indonesia, Vietnam, etc.</td>
+                    </tr>
+                    <tr>
+                        <td>South Asia</td>
+                        <td>$15 - $30</td>
+                        <td>$25 - $45</td>
+                        <td>$40 - $70</td>
+                        <td>India, Pakistan, Bangladesh, Sri Lanka</td>
+                    </tr>
+                    <tr>
+                        <td>Global Average</td>
+                        <td>$30 - $50</td>
+                        <td>$50 - $80</td>
+                        <td>$85 - $130</td>
+                        <td>All regions combined</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Market Insight -->
+        <div class="market-insight">
+            <div class="insight-header">
+                <span class="insight-icon">🎯</span>
+                Market Insight
+            </div>
+            <p>You are within the market average range for Mid-level Web Development in the United States.</p>
+        </div>
+
+        <p class="benchmarks-source">Sources: Arc.dev, Toptal, Upwork, Freelancer.com - 2026 Market Data. Rates vary based on skills, niche, and project complexity.</p>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips-section">
+        <div class="section-header">
+            <div class="section-icon">4</div>
+            <h2>Tips for Freelancers</h2>
+        </div>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">🎯</div>
+                <h3>Focus on Value</h3>
+                <p>Clients pay for results, not hours. Communicate the value you deliver.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🤝</div>
+                <h3>Build Long-term Relationships</h3>
+                <p>Repeat clients and referrals are the best way to increase your rates.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">💼</div>
+                <h3>Consider Direct Clients</h3>
+                <p>Direct clients can significantly reduce your platform fees.</p>
+            </div>
+            <div class="ad-slot-bottom">
+                <div class="ad-placeholder">广告位</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="disclaimer">Disclaimer: For informational purposes only. Not financial, tax, or legal advice. Market estimates are based on 2026 public data and may vary.</p>
+        <div class="footer-links">
+            <span>Privacy: No data collected</span>
+            <span>•</span>
+            <span>No cookies</span>
+            <span>•</span>
+            <span>No tracking</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

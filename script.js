@@ -18,10 +18,16 @@ const taxRates = {
 
 // Platform fees
 const platformFees = {
-    'direct': { name: 'Direct Client (0-5%)', fee: 0.025 },
-    'upwork': { name: 'Upwork', fee: 0.20 },
+    'direct': { name: 'Direct Client', fee: 0.025 },
+    'upwork': { name: 'Upwork', fee: 0.10 },
     'fiverr': { name: 'Fiverr', fee: 0.20 },
-    'freelancer': { name: 'Freelancer.com', fee: 0.10 }
+    'freelancer': { name: 'Freelancer.com', fee: 0.10 },
+    'toptal': { name: 'Toptal', fee: 0.00 },
+    'peopleperhour': { name: 'PeoplePerHour', fee: 0.175 },
+    'guru': { name: 'Guru', fee: 0.07 },
+    'contra': { name: 'Contra', fee: 0.00 },
+    '99designs': { name: '99designs', fee: 0.15 },
+    'behance': { name: 'Behance', fee: 0.00 }
 };
 
 // Platform colors for charts
@@ -29,7 +35,13 @@ const platformColors = {
     'direct': '#667eea',
     'upwork': '#00b42a',
     'fiverr': '#1dbf73',
-    'freelancer': '#28c76f'
+    'freelancer': '#28c76f',
+    'toptal': '#ff6b6b',
+    'peopleperhour': '#f39c12',
+    'guru': '#9b59b6',
+    'contra': '#3498db',
+    '99designs': '#e74c3c',
+    'behance': '#053eff'
 };
 
 // Rate benchmarks based on Category, Experience Level, and Complexity
@@ -179,6 +191,12 @@ function calculateResults() {
     const billableHours = parseFloat(billableHoursInput.value) || 0;
     const expenses = parseFloat(expensesInput.value) || 0;
     const taxRate = parseFloat(taxRateInput.value) / 100 || 0;
+    
+    // Check for division by zero
+    if (billableHours <= 0) {
+        recommendedRate.textContent = '0.00';
+        return;
+    }
     
     // Calculate gross hourly rate needed
     // Net = Gross * (1 - platform fee) * (1 - tax) - expenses

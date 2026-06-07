@@ -101,30 +101,6 @@ body {
     color: #999;
 }
 
-.hero-image img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.ad-slot-top {
-    background: #fff3e0;
-    border: 2px dashed #ff9800;
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 150px;
-}
-
-.ad-placeholder {
-    color: #e65100;
-    font-weight: 700;
-    font-size: 20px;
-    text-align: center;
-}
-
 /* Section Header */
 .section-header {
     display: flex;

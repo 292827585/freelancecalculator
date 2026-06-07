@@ -79,24 +79,26 @@ body {
     line-height: 1.6;
 }
 
-.hero-stats {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 8px;
+.hero-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 400px;
+    margin-top: 20px;
 }
 
-.hero-stats span {
+.hero-stat-item {
+    text-align: left;
+}
+
+.hero-stat-value {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     color: #667eea;
+    margin-bottom: 4px;
 }
 
-.hero-stats-labels {
-    display: flex;
-    gap: 40px;
-}
-
-.hero-stats-labels span {
+.hero-stat-label {
     font-size: 12px;
     color: #999;
 }
